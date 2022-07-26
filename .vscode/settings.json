@@ -97,6 +97,9 @@
     "typeindex": "cpp",
     "unordered_set": "cpp",
     "valarray": "cpp",
-    "cuchar": "cpp"
+    "cuchar": "cpp",
+    "numbers": "cpp",
+    "span": "cpp",
+    "variant": "cpp"
   }
 }
