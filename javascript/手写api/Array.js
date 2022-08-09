@@ -108,3 +108,16 @@ const sum = players.myReduce((total, next) => {
   return total + next.num
 }, 0)
 console.log(sum) // 85
+
+// findIndex
+Array.prototype.myFindIndex = function(callback) {
+  for(let i = 0; i < this.length; i++) {
+    if(callback(this[i], i, this)){
+      return i
+    }
+  }
+  return -1;
+}
+
+console.log(players.myFindIndex(item => item.name === '科比')) // 0
+console.log(players.myFindIndex(item => item.name === '安东尼')) // -1
