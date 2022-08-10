@@ -121,3 +121,60 @@ Array.prototype.myFindIndex = function(callback) {
 
 console.log(players.myFindIndex(item => item.name === '科比')) // 0
 console.log(players.myFindIndex(item => item.name === '安东尼')) // -1
+
+
+// find
+Array.prototype.myFind = function(callback) {
+  for(let i = 0; i < this.length; i++) {
+    if(callback(this[i], i, this))
+      return this[i]
+  }
+  return undefined
+}
+
+
+console.log(players.myFind(item => item.name === '科比')) // { name: '科比', num: 24 }
+console.log(players.myFind(item => item.name === '安东尼')) // undefined
+
+// fill
+Array.prototype.myFill = function(value, start = 0, end) {
+  end = end || this.length
+  for(let i = start; i < end; i++) {
+    this[i] = value
+  }
+  return this
+}
+
+console.log(players.myFill('mason', 1, 3))
+
+// includes
+
+Array.prototype.myIncludes = function(el, index = 0) {
+  if(start < 0) start = this.length + start
+  if(el.toString() === 'NaN') el = 'NaN'
+  for(let i = index; i < this.length; i++) {
+    if(this[i] === el || this[i].toString() === 'NaN') 
+      return true
+  }
+  return false
+}
+
+console.log([1, 2, 3].myIncludes(2)) // true
+console.log([1, 2, 3, NaN].myIncludes(NaN)) // true
+console.log([1, 2, 3].myIncludes(1, 1)) // false
+
+
+// join
+
+Array.prototype.myJoin = function(sep = ',') {
+  let str = ''
+
+  for(let i = 0; i < this.length; i++) {
+    str += i === 0 ?  `${this[i].toString()}` : `${sep}${this[i].toString()}`
+  }
+
+  return str
+}
+
+console.log([1, 2, 3].myJoin()) // 1,2,3
+console.log([1, 2, 3].myJoin('*')) // 1*2*3
